@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#210b0c">
+  <title>Maharaja Lounge | Smart Counter Demo</title>
+  <meta name="description" content="A concept Smart Counter experience for Maharaja Lounge, Al Karama.">
+  <style>
+    :root{--wine:#240b0d;--wine2:#3a1014;--gold:#d9ae56;--gold2:#f2d58d;--cream:#fff8e8;--muted:#cdbfa8;--line:rgba(242,213,141,.2)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#120607;color:var(--cream);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% -10%,rgba(217,174,86,.18),transparent 35%),linear-gradient(180deg,transparent 60%,rgba(217,174,86,.04));z-index:-1}
+    .shell{width:min(100%,540px);margin:auto;min-height:100vh;background:linear-gradient(180deg,var(--wine),#160708 70%);box-shadow:0 0 80px #000}.backConcepts{position:fixed;z-index:4;left:16px;top:16px;color:#fff;text-decoration:none;background:#100708b8;border:1px solid var(--line);padding:9px 12px;border-radius:999px;font-size:12px;backdrop-filter:blur(10px)}
+    .hero{position:relative;min-height:330px;padding:20px 20px 26px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;background:linear-gradient(180deg,rgba(15,3,4,.08),rgba(20,5,6,.35) 48%,#240b0d 100%),url('https://images.pexels.com/videos/12009297/caponata-12009297.jpeg?auto=compress&dpr=1&h=750&w=1260') center/cover}
+    .hero:after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.03);pointer-events:none}
+    .top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}.demo{font-size:12px;letter-spacing:.13em;text-transform:uppercase;padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(15,3,4,.48);backdrop-filter:blur(12px)}
+    .brand{position:relative;z-index:1;text-shadow:0 2px 24px #000}.crown{color:var(--gold2);font-size:30px;line-height:1}.brand h1{font-family:Georgia,"Times New Roman",serif;margin:7px 0 3px;font-size:39px;line-height:.98;letter-spacing:.01em}.brand p{margin:0;color:var(--gold2);font-size:14px;letter-spacing:.17em;text-transform:uppercase}
+    main{padding:0 18px 110px}.welcome{margin:3px 2px 20px;color:#e8dcc6;font-size:15px;line-height:1.55}.welcome strong{color:var(--cream)}
+    .actions{display:grid;grid-template-columns:1fr 1fr;gap:11px}.action{appearance:none;text-decoration:none;color:var(--cream);border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.02));min-height:105px;border-radius:20px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s transform,.2s border-color;cursor:pointer;text-align:left}.action:active{transform:scale(.98)}.action:hover{border-color:rgba(242,213,141,.55)}
+    .icon{width:39px;height:39px;border-radius:13px;display:grid;place-items:center;background:rgba(217,174,86,.12);color:var(--gold2);font-size:20px}.action b{font-size:16px}.action small{color:var(--muted);font-size:12px;line-height:1.4}.primary{grid-column:1/-1;min-height:92px;display:grid;grid-template-columns:48px 1fr 24px;align-items:center;gap:12px;background:linear-gradient(120deg,#d9ae56,#f2d58d);color:#240b0d;border:0}.primary .icon{background:rgba(36,11,13,.1);color:#240b0d}.primary small{color:#5b3f24}.arrow{font-size:24px}
+    .section{margin-top:28px}.eyebrow{font-size:12px;color:var(--gold2);letter-spacing:.15em;text-transform:uppercase}.section h2{font-family:Georgia,"Times New Roman",serif;font-size:25px;margin:6px 0 14px}.specials{display:flex;gap:10px;overflow:auto;padding-bottom:4px;scrollbar-width:none}.dish{flex:0 0 150px;border:1px solid var(--line);border-radius:18px;padding:14px;background:#210b0d}.dish span{font-size:22px}.dish b{display:block;margin-top:16px;font-size:14px}.dish small{display:block;color:var(--muted);margin-top:4px}.dish em{display:block;color:var(--gold2);font-style:normal;margin-top:10px;font-weight:700}
+    .offer{margin-top:28px;border:1px solid rgba(217,174,86,.35);background:radial-gradient(circle at 100% 0,rgba(217,174,86,.22),transparent 43%),#210b0d;border-radius:23px;padding:20px}.offer h3{font-family:Georgia,"Times New Roman",serif;font-size:23px;margin:4px 0 7px}.offer p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}.stamp{display:flex;gap:7px;margin-top:16px}.stamp i{height:31px;flex:1;border:1px dashed rgba(242,213,141,.5);border-radius:9px;display:grid;place-items:center;color:var(--gold2);font-style:normal}.stamp i:first-child{background:var(--gold);color:#2b0d0f;border-style:solid}
+    footer{text-align:center;border-top:1px solid var(--line);padding:22px;color:#998b76;font-size:12px}.footbrand{color:var(--gold2);font-weight:700;letter-spacing:.08em}
+    .sheet{position:fixed;inset:0;background:rgba(0,0,0,.68);display:none;align-items:flex-end;justify-content:center;z-index:5}.sheet.open{display:flex}.panel{width:min(100%,540px);background:#241012;border:1px solid var(--line);border-radius:28px 28px 0 0;padding:22px 20px 30px}.panel h3{font-family:Georgia,"Times New Roman",serif;font-size:25px;margin:0 0 8px}.panel p{color:var(--muted);font-size:14px;line-height:1.5}.panel textarea{width:100%;min-height:110px;background:#140708;border:1px solid var(--line);color:#fff;border-radius:15px;padding:14px;font:inherit;resize:vertical}.row{display:flex;gap:10px;margin-top:12px}.btn{border:0;border-radius:14px;padding:13px 16px;font-weight:700;cursor:pointer}.btn.gold{background:var(--gold);color:#240b0d;flex:1}.btn.ghost{background:#392023;color:#fff}.notice{display:none;margin-top:12px;color:var(--gold2);font-size:14px}.notice.show{display:block}
+    @media(min-width:700px){body{padding:24px}.shell{border-radius:30px;overflow:hidden;min-height:calc(100vh - 48px)}.sheet{align-items:center}.panel{border-radius:28px}}
+  </style>
+</head>
+<body><a class="backConcepts" href="index.html">← All concepts</a>
+  <div class="shell">
+    <header class="hero">
+      <div class="top"><span class="demo">Concept demo</span><span class="demo">Al Karama</span></div>
+      <div class="brand"><div class="crown">♛</div><h1>Maharaja Lounge</h1><p>Pure vegetarian Indian dining</p></div>
+    </header>
+    <main>
+      <p class="welcome"><strong>Welcome.</strong> Everything you need for your next Maharaja experience—one tap away.</p>
+      <section class="actions" aria-label="Quick actions">
+        <a class="action primary" href="menu.html"><span class="icon">☰</span><span><b>Order from our menu</b><small>Browse dishes, build your cart and choose pickup or delivery</small></span><span class="arrow">›</span></a>
+        <button class="action" type="button" onclick="demoAction('WhatsApp ordering will connect to the restaurant’s official number after approval.')"><span class="icon">◉</span><span><b>Order on WhatsApp</b><small>Fast pickup or delivery enquiry</small></span></button>
+        <a class="action" href="https://www.google.com/maps/place/Maharaja+Lounge+-+100%25+Pure+Veg+Authentic+Indian+Restaurant/@25.2411396,55.3038898,17z" target="_blank" rel="noopener"><span class="icon">⌖</span><span><b>Get directions</b><small>Karama Shopping Complex</small></span></a>
+        <a class="action" href="https://www.google.com/maps/place/Maharaja+Lounge+-+100%25+Pure+Veg+Authentic+Indian+Restaurant/@25.2411396,55.3038898,17z" target="_blank" rel="noopener"><span class="icon">★</span><span><b>Share a review</b><small>Tell others about your visit</small></span></a>
+        <button class="action" type="button" onclick="openFeedback()"><span class="icon">♡</span><span><b>Private feedback</b><small>Help the team improve your experience</small></span></button>
+      </section>
+      <section class="section"><span class="eyebrow">Guest favourites</span><h2>A little royal inspiration</h2><div class="specials">
+        <div class="dish"><span>🍛</span><b>Dal Makhani</b><small>Slow-cooked & creamy</small><em>AED 16.80</em></div>
+        <div class="dish"><span>🫓</span><b>Chur Chur Naan</b><small>Crisp North Indian classic</small><em>AED 19.20</em></div>
+        <div class="dish"><span>🥟</span><b>Momo Feast</b><small>Steam & tandoori selection</small><em>AED 50.40</em></div>
+      </div></section>
+      <section class="offer"><span class="eyebrow">Maharaja Rewards</span><h3>Your loyalty deserves a feast</h3><p>Tap after every visit. Complete five visits to unlock a restaurant-selected reward.</p><div class="stamp" aria-label="One of five visits completed"><i>♛</i><i>2</i><i>3</i><i>4</i><i>5</i></div></section>
+    </main>
+    <footer><span class="footbrand">SMART COUNTER CONCEPT BY APEX MEDIA</span><br>Independent proposal demo—not an official Maharaja Lounge page.</footer>
+  </div>
+  <div class="sheet" id="feedbackSheet" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle" onclick="closeOnBackdrop(event)"><div class="panel">
+    <h3 id="feedbackTitle">Tell us privately</h3><p>Your note would go directly to the restaurant team after this demo is approved. Nothing is transmitted in this concept version.</p>
+    <textarea id="feedback" placeholder="How could we make your experience better?"></textarea><div class="row"><button class="btn ghost" onclick="closeFeedback()">Cancel</button><button class="btn gold" onclick="submitDemo()">Submit feedback</button></div><div class="notice" id="notice">Demo complete—no information was sent.</div>
+  </div></div>
+  <script>
+    function openFeedback(){document.getElementById('feedbackSheet').classList.add('open');setTimeout(()=>document.getElementById('feedback').focus(),50)}
+    function closeFeedback(){document.getElementById('feedbackSheet').classList.remove('open');document.getElementById('notice').classList.remove('show')}
+    function closeOnBackdrop(e){if(e.target.id==='feedbackSheet')closeFeedback()}
+    function submitDemo(){document.getElementById('notice').classList.add('show');document.getElementById('feedback').value=''}
+    function demoAction(message){alert(message)}
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeFeedback()})
+  </script>
+</body>
+</html>
