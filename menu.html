@@ -19,33 +19,15 @@
 <div class="overlay" id="overlay" onclick="backdrop(event)"><section class="sheet" aria-modal="true" role="dialog" aria-labelledby="cartTitle"><div class="handle"></div><div id="cartView"><div class="sheethead"><h2 id="cartTitle">Your order</h2><button class="close" onclick="closeCart()">✕</button></div><div id="cartLines"></div><div class="summary"><div class="sumrow"><span>Subtotal</span><span id="subtotal"></span></div><div class="sumrow"><span>Delivery</span><span id="deliveryFee"></span></div><div class="sumrow total"><span>Total</span><span id="total"></span></div></div><div class="field"><label>Your name</label><input id="name" placeholder="Enter your name"></div><div class="field"><label>Order note</label><input id="note" placeholder="Less spicy, no onion, etc."></div><button class="checkout" onclick="completeDemo()">Continue order on WhatsApp</button><p class="demoNote">Demo mode: no order or personal information is transmitted. Official WhatsApp connection activates after restaurant approval.</p></div><div class="success" id="success"><div class="tick">✓</div><h3>Order summary ready</h3><p id="orderText"></p><button class="copy" onclick="copySummary()">Copy demo summary</button><p class="demoNote">Nothing has been sent.</p></div></section></div>
 <script>
 const dishes=[
- {id:1,name:'Royal Aloo Tikki',desc:'Crisp potato patties with chutneys and fresh garnish',price:8,cat:'starters',best:true,icon:'🥔'},
- {id:2,name:'Ragda Chaat',desc:'Spiced white peas, crisp tikki and tangy chutneys',price:14,cat:'starters',best:true,icon:'🥣'},
- {id:3,name:'Vegetable Samosa Basket',desc:'Three golden samosas served with house chutneys',price:11,cat:'starters',best:false,icon:'🥟'},
- {id:4,name:'Paneer Angara',desc:'Smoky cottage cheese in a rich tomato-chilli gravy',price:29,cat:'mains',best:true,icon:'🔥'},
- {id:5,name:'Maharaja Dal',desc:'Slow-cooked black lentils finished with butter',price:21,cat:'mains',best:true,icon:'🍛'},
- {id:6,name:'Subz Handi',desc:'Seasonal vegetables in an aromatic royal gravy',price:24,cat:'mains',best:false,icon:'🥘'},
- {id:7,name:'Tandoori Roti',desc:'Whole-wheat bread baked fresh in the tandoor',price:5,cat:'breads',best:false,icon:'🫓'},
- {id:8,name:'Stuffed Kulcha',desc:'Crisp layered bread with a savoury vegetable filling',price:12,cat:'breads',best:true,icon:'🥙'},
- {id:9,name:'Jeera Rice',desc:'Basmati rice tempered with cumin and herbs',price:13,cat:'mains',best:false,icon:'🍚'},
- {id:10,name:'Royal Mango Lassi',desc:'Chilled mango and yoghurt blend with saffron',price:14,cat:'drinks',best:true,icon:'🥭'},
- {id:11,name:'Masala Chaas',desc:'Cooling spiced buttermilk with roasted cumin',price:8,cat:'drinks',best:false,icon:'🥛'},
- {id:12,name:'Saffron Masala Chai',desc:'Fresh milk tea brewed with warming spices',price:7,cat:'drinks',best:false,icon:'☕'}
+{id:1,name:'Dal Makhani',desc:'Slow-cooked black lentils finished with butter and cream',price:21,cat:'mains',best:true,img:'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto/663a45ea109aee65ce2f14a10f030674'},
+{id:2,name:'Paneer Tikka',desc:'Smoky tandoor-grilled paneer with peppers and onion',price:28,cat:'starters',best:true,img:'https://dineout-media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto%2Cw_600%2Ch_468/v1698410309/0bbcc9ff11450be5e2d4ffe667818d3f.jpg'},
+{id:3,name:'Chur Chur Naan',desc:'Crisp layered stuffed bread served with chutney',price:15,cat:'breads',best:true,img:'https://images.slurrp.com/prodrich_article/eder1cs6xoe.webp'},
+{id:4,name:'Vegetable Samosa Basket',desc:'Golden vegetable samosas with mint and tamarind chutney',price:11,cat:'starters',best:false,img:'https://teresasrecipes.com/images/2d530acf-9a1d-48b3-98b3-b792a1f91912.jpg'},
+{id:5,name:'Paneer Butter Masala',desc:'Paneer cubes in a velvety tomato-butter gravy',price:27,cat:'mains',best:true,img:'https://static.wixstatic.com/media/f2a256_6096cf2f2d1a4c59983d0152ba4a3ef9~mv2.jpg/v1/fill/w_480%2Ch_640%2Cq_90%2Cenc_avif%2Cquality_auto/f2a256_6096cf2f2d1a4c59983d0152ba4a3ef9~mv2.jpg'},
+{id:6,name:'Jeera Rice',desc:'Fragrant basmati rice tempered with cumin',price:13,cat:'mains',best:false,img:'https://www.cookingcarnival.com/wp-content/uploads/2021/06/Jeera-rice-2.jpg'},
+{id:7,name:'Mango Lassi',desc:'Chilled mango and yoghurt blend with saffron',price:14,cat:'drinks',best:true,img:'https://sandhyahariharan.co.uk/wp-content/uploads/2020/04/mango-lassi-1-of-1.jpg'},
+{id:8,name:'Masala Chai',desc:'Fresh milk tea brewed with aromatic spices',price:7,cat:'drinks',best:false,img:'https://diltak.ca/cdn/shop/files/Masala-Chai.jpg?v=1744198159'}
 ];
-const dishPhotos={
-1:'https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg?auto=compress&cs=tinysrgb&w=500',
-2:'https://images.pexels.com/photos/5410400/pexels-photo-5410400.jpeg?auto=compress&cs=tinysrgb&w=500',
-3:'https://images.pexels.com/photos/960984/pexels-photo-960984.jpeg?auto=compress&cs=tinysrgb&w=500',
-4:'https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=500',
-5:'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=500',
-6:'https://images.pexels.com/photos/7625056/pexels-photo-7625056.jpeg?auto=compress&cs=tinysrgb&w=500',
-7:'https://images.pexels.com/photos/1117862/pexels-photo-1117862.jpeg?auto=compress&cs=tinysrgb&w=500',
-8:'https://images.pexels.com/photos/2474658/pexels-photo-2474658.jpeg?auto=compress&cs=tinysrgb&w=500',
-9:'https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=500',
-10:'https://images.pexels.com/photos/2103949/pexels-photo-2103949.jpeg?auto=compress&cs=tinysrgb&w=500',
-11:'https://images.pexels.com/photos/5946628/pexels-photo-5946628.jpeg?auto=compress&cs=tinysrgb&w=500',
-12:'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=500'
-};dishes.forEach(d=>d.img=dishPhotos[d.id]);
 let cart=JSON.parse(localStorage.getItem('maharajaDemoCart')||'{}'),activeCat='all',service='Pickup',lastSummary='';
 const money=n=>'AED '+n.toFixed(2);function save(){localStorage.setItem('maharajaDemoCart',JSON.stringify(cart));updateCartUI()}
 function render(){const q=document.getElementById('search').value.toLowerCase().trim();let view=dishes.filter(d=>(activeCat==='all'||(activeCat==='bestseller'&&d.best)||d.cat===activeCat)&&(!q||(d.name+' '+d.desc).toLowerCase().includes(q)));document.getElementById('empty').style.display=view.length?'none':'block';const groups=[['Bestsellers',view.filter(d=>d.best)],['More to explore',view.filter(d=>!d.best)]];document.getElementById('menuList').innerHTML=groups.filter(g=>g[1].length).map(g=>`<h2 class="category">${g[0]}</h2>${g[1].map(itemHTML).join('')}`).join('')}
