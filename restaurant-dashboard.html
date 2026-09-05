@@ -78,11 +78,11 @@ async function startLive(){document.getElementById('staffLogin').classList.add('
 async function loginStaff(e){e.preventDefault();let b=document.getElementById('loginBtn'),msg=document.getElementById('loginError');b.disabled=true;b.textContent='Signing in…';msg.textContent='';let r=await sb.auth.signInWithPassword({email:document.getElementById('staffEmail').value,password:document.getElementById('staffPassword').value});b.disabled=false;b.textContent='Open dashboard';if(r.error){msg.textContent=r.error.message;return}startLive()}
 async function updateRemote(fields){if(!currentOrder||!currentOrder.dbId)return;let r=await sb.from('orders').update(Object.assign(fields,{updated_at:new Date().toISOString()})).eq('id',currentOrder.dbId);if(r.error)toast('Live update failed')}
 const originalAccept=acceptOrder;
-acceptOrder=async function(){let mins=parseInt(document.getElementById('prepTime').value)||30;await updateRemote({order_status:'accepted',prep_minutes:mins});originalAccept()}
+acceptOrder=async function(){let mins=parseInt(document.getElementById('prepTime').value)||30;await updateRemote({order_status:'accepted',prep_minutes:mins});originalAccept();await notifyCustomer({type:'order_status',status:'accepted',prep_minutes:mins})}
 const originalReject=rejectOrder;
-rejectOrder=async function(){await updateRemote({order_status:'rejected'});originalReject()}
+rejectOrder=async function(){await updateRemote({order_status:'rejected'});originalReject();await notifyCustomer({type:'order_status',status:'rejected'})}
 const originalStatus=setStatus;
-setStatus=async function(status,btn){await updateRemote({order_status:status.toLowerCase().replaceAll(' ','_')});originalStatus(status,btn)}
+setStatus=async function(status,btn){let key=status.toLowerCase().replaceAll(' ','_');await updateRemote({order_status:key});originalStatus(status,btn);await notifyCustomer({type:'order_status',status:key})}
 
 let customerOrderChannel=null;
 function connectCustomerChannel(name){if(!name)return;if(customerOrderChannel)sb.removeChannel(customerOrderChannel);customerOrderChannel=sb.channel(name).on('broadcast',{event:'customer_response'},function(msg){handleCustomerResponse(msg.payload||{})}).subscribe()}
