@@ -18,6 +18,30 @@
   body.hotelMode .pendingPanel{margin-bottom:0}
 }
 @media(max-width:900px){body.hotelMode .riderCard .actions{grid-template-columns:1fr}}
+
+/* Large-screen dashboard sizing */
+@media(min-width:1200px){
+  body.hotelMode .wrap{max-width:1560px;width:calc(100% - 56px);padding:30px 0 46px}
+  body.hotelMode .nav{margin-bottom:22px;padding-bottom:20px}
+  body.hotelMode .brand{font-size:23px}
+  body.hotelMode .badge{font-size:12px;padding:9px 13px}
+  body.hotelMode .historyPanel,body.hotelMode .dashboard,body.hotelMode .pendingPanel{padding:26px 28px;border-radius:24px;margin:20px 0}
+  body.hotelMode .historyHead h2,body.hotelMode .pendingHead h2{font-size:34px}
+  body.hotelMode .dashTop h2{font-size:34px}
+  body.hotelMode .dashboard:before{font-size:11px;margin-bottom:19px}
+  body.hotelMode .riderCard{padding:24px;border-radius:19px}
+  body.hotelMode .riderCard h3{font-size:23px;margin:18px 0}
+  body.hotelMode .riderChips{gap:12px}
+  body.hotelMode .riderChip{min-height:58px;font-size:13px}
+  body.hotelMode .riderCard .actions button{min-height:52px;font-size:15px}
+  body.hotelMode .queueTabs{gap:12px}
+  body.hotelMode .queueTab{min-height:82px;padding:16px}
+  body.hotelMode .queueTab span{font-size:11px}
+  body.hotelMode .queueTab strong{font-size:30px}
+  body.hotelMode .orderMetrics{gap:13px}
+  body.hotelMode .metricCard{min-height:96px;padding:19px}
+  body.hotelMode .metricCard strong{font-size:34px}
+}
 </style></head><body><div class="ownerSplash" id="ownerSplash" aria-label="Loading restaurant dashboard"><div class="ownerSplashInner"><div class="splashCrown">♛</div><small>WELCOME TO MAHARAJA OPERATIONS</small><h1>Welcome back, Boss.</h1><blockquote>Let’s make today profitable.</blockquote><div class="splashLine"></div><small class="splashStatus">PREPARING YOUR LIVE DASHBOARD</small></div></div><div class="staffLogin" id="staffLogin"><form class="loginCard" onsubmit="loginStaff(event)"><span>RESTAURANT STAFF ACCESS</span><h2>Maharaja Dashboard</h2><p>Sign in to receive live orders.</p><input id="staffEmail" type="email" placeholder="Staff email" required><input id="staffPassword" type="password" placeholder="Password" required><button id="loginBtn">Open dashboard</button><small id="loginError"></small></form></div><div class="connection" id="connection">Connecting…</div><div class="wrap">
 <nav class="nav"><span class="badge">OWNER DASHBOARD</span><span class="brand">♛ Maharaja Lounge</span><span class="badge">LIVE OPERATIONS</span></nav>
 <section class="intro"><div><span class="badge">LIVE WORKING DEMO</span><h1>One order.<br>Zero manual writing.</h1><p>The customer orders on the restaurant website. The kitchen receives a structured order, while the delivery boy gets the complete address and Maps location automatically.</p></div><div class="problem"><b>The problem this solves</b><p>No employee has to repeatedly reply on WhatsApp, ask for missing details, calculate totals or rewrite an address for delivery.</p></div></section><div class="viewbar"><button id="customerTab" class="on" onclick="showView('customer')">Customer ordering</button><button id="hotelTab" onclick="showView('hotel')">Hotel dashboard <span id="orderCount"></span></button></div>
