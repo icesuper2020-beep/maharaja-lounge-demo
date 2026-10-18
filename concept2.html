@@ -57,41 +57,52 @@ nav a{color:#f4e8d2}nav a:hover{color:#f1c86f}
 .film video:not(.is-playing){pointer-events:none}
 .film .filmFallback{position:absolute;inset:0;background:linear-gradient(90deg,#08090966,#08090911),url('https://images.pexels.com/photos/5779367/pexels-photo-5779367.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;z-index:0}
 @media(max-width:760px){.film{background-position:center}.film .filmFallback{background-position:center}}
-</style></head><body><div class="loader" id="loader" role="status" aria-label="Welcome to Dine Bay"><div class="loaderInner"><div class="crown">✦</div><p class="welcomeOverline">A dining experience</p><h1>Welcome to<br><strong>Dine Bay</strong></h1><p class="welcomeLocation">RESTAURANT · BUSINESS BAY · DUBAI</p><div class="line"></div><p class="welcomeHint">Preparing your experience</p></div></div><nav><a href="index.html" class="brand">DINE BAY</a><div class="navSteps"><a href="index.html" aria-label="Step 1 Welcome">01 Welcome</a><a href="#experience" aria-label="Step 2 Cinematic experience">02 Experience</a><a href="advanced-menu.html" aria-label="Step 3 Order from menu">03 Menu →</a></div></nav><header class="hero" id="experience"><div class="film"><div class="filmFallback" aria-hidden="true"></div>
-    <video class="active" autoplay muted playsinline preload="auto" aria-label="Flame-grilled shawarma" data-fallback="https://videos.pexels.com/video-files/9797433/9797433-hd_1920_1080_25fps.mp4"><source src="https://videos.pexels.com/video-files/4440943/4440943-hd_1920_1080_50fps.mp4" type="video/mp4"></video>
-    <video muted playsinline preload="auto" aria-label="Shawarma on the rotisserie" data-fallback="https://videos.pexels.com/video-files/26852816/12021934_3840_2160_30fps.mp4"><source src="https://videos.pexels.com/video-files/5528171/5528171-hd_1920_1080_25fps.mp4" type="video/mp4"></video>
-    <video muted playsinline preload="auto" aria-label="Freshly carved shawarma" data-fallback="https://videos.pexels.com/video-files/4912725/4912725-uhd_3840_2160_24fps.mp4"><source src="https://videos.pexels.com/video-files/5528182/5528182-hd_1920_1080_25fps.mp4" type="video/mp4"></video>
-    <video muted playsinline preload="auto" aria-label="Handcrafted shawarma wrap" data-fallback="https://cdn.coverr.co/videos/coverr-chef-cooking-in-a-restaurant-3327/720p.mp4"><source src="https://videos.pexels.com/video-files/5528073/5528073-hd_1920_1080_25fps.mp4" type="video/mp4"></video>
-    <video muted playsinline preload="auto" aria-label="Sizzling meat & spice" data-fallback="https://cdn.coverr.co/videos/user-ai-generation-FSf8EMDAeL1Y/720p.mp4"><source src="https://videos.pexels.com/video-files/5528177/5528177-hd_1920_1080_25fps.mp4" type="video/mp4"></video>
-  </div><div class="shade"></div><div class="sceneMeta" aria-hidden="true"><span class="active"></span><span></span><span></span><span></span><span></span></div><div class="sceneName" id="sceneName">The art of flavour</div><div class="heroText"><span class="eyebrow">Fresh flavours • Business Bay, Dubai</span><h1><span>Welcome to Dine Bay.</span><span>Made to remember.</span></h1><p>From sizzling kitchen moments to unforgettable flavours — breakfast, biryani, shawarma, burgers and so much more.</p><div class="buttons"><a class="btn gold" href="advanced-menu.html">Start Your Order</a><a class="btn" href="#story">Explore Dine Bay</a></div></div><span class="scroll">SCROLL TO DISCOVER ↓</span></header><section class="story" id="story"><div class="reveal"><span class="eyebrow">A culinary experience</span><h2>A taste worth coming back for.</h2><p>Discover an all-day dining experience in Business Bay. From comforting Indian favourites to freshly prepared wraps, burgers and refreshing drinks — something delicious is always waiting.</p></div><div class="frame reveal" role="img" aria-label="Delicious Kerala chicken biryani and Indian food"></div></section><section class="signatures"><span class="eyebrow">A taste of Dine Bay</span><h2 class="reveal">Our signatures.</h2><div class="dishgrid">
+
+/* Menu-led cinematic experience — matching food stills always visible */
+.film{background:#15100b!important;overflow:hidden}
+.film:before{display:none!important}
+.foodScene{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;visibility:hidden;transform:scale(1.045);transition:opacity 1.15s ease,transform 6s ease,visibility 1.15s}
+.foodScene.active{opacity:1;visibility:visible;transform:scale(1)}
+.foodScene video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0!important;visibility:hidden;transition:opacity 1s ease;filter:saturate(1.04) contrast(1.06)}
+.foodScene video.is-playing{opacity:1!important;visibility:visible}
+@media(max-width:760px){.foodScene{background-position:center}.foodScene video{object-position:center}}
+</style></head><body><div class="loader" id="loader" role="status" aria-label="Welcome to Dine Bay"><div class="loaderInner"><div class="crown">✦</div><p class="welcomeOverline">A dining experience</p><h1>Welcome to<br><strong>Dine Bay</strong></h1><p class="welcomeLocation">RESTAURANT · BUSINESS BAY · DUBAI</p><div class="line"></div><p class="welcomeHint">Preparing your experience</p></div></div><nav><a href="index.html" class="brand">DINE BAY</a><div class="navSteps"><a href="index.html" aria-label="Step 1 Welcome">01 Welcome</a><a href="#experience" aria-label="Step 2 Cinematic experience">02 Experience</a><a href="advanced-menu.html" aria-label="Step 3 Order from menu">03 Menu →</a></div></nav><header class="hero" id="experience"><div class="film"><div class="foodScene active" data-scene="0" style="background-image:linear-gradient(90deg,#09080788,#09080718),url('https://images.pexels.com/photos/12737656/pexels-photo-12737656.jpeg?auto=compress&cs=tinysrgb&w=1800')" role="img" aria-label="Freshly prepared biryani"><video muted playsinline preload="none" poster="https://images.pexels.com/photos/12737656/pexels-photo-12737656.jpeg?auto=compress&cs=tinysrgb&w=1800" aria-label="Malabar Dum Biryani"><source src="https://videos.pexels.com/video-files/4912725/4912725-uhd_3840_2160_24fps.mp4" type="video/mp4"></video></div><div class="foodScene" data-scene="1" style="background-image:linear-gradient(90deg,#09080788,#09080718),url('https://images.pexels.com/photos/5779367/pexels-photo-5779367.jpeg?auto=compress&cs=tinysrgb&w=1800')" role="img" aria-label="Chicken shawarma and wraps"></div><div class="foodScene" data-scene="2" style="background-image:linear-gradient(90deg,#09080788,#09080718),url('https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1800')" role="img" aria-label="Chicken curry and chef's specials"><video muted playsinline preload="none" poster="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1800" aria-label="Chef's Chicken Special"><source src="https://videos.pexels.com/video-files/26852816/12021934_3840_2160_30fps.mp4" type="video/mp4"></video></div><div class="foodScene" data-scene="3" style="background-image:linear-gradient(90deg,#09080788,#09080718),url('https://images.pexels.com/photos/2232/vegetables-italian-pizza-restaurant.jpg?auto=compress&cs=tinysrgb&w=1800')" role="img" aria-label="Grilled food prepared fresh"><video muted playsinline preload="none" poster="https://images.pexels.com/photos/2232/vegetables-italian-pizza-restaurant.jpg?auto=compress&cs=tinysrgb&w=1800" aria-label="Fresh From the Grill"><source src="https://videos.pexels.com/video-files/9797433/9797433-hd_1920_1080_25fps.mp4" type="video/mp4"></video></div><div class="foodScene" data-scene="4" style="background-image:linear-gradient(90deg,#09080788,#09080718),url('https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=1800')" role="img" aria-label="Restaurant burgers and favourites"></div></div><div class="shade"></div><div class="sceneMeta" aria-hidden="true"><span class="active"></span><span></span><span></span><span></span><span></span></div><div class="sceneName" id="sceneName">The art of flavour</div><div class="heroText"><span class="eyebrow">Fresh flavours • Business Bay, Dubai</span><h1><span>Welcome to Dine Bay.</span><span>Made to remember.</span></h1><p>From sizzling kitchen moments to unforgettable flavours — breakfast, biryani, shawarma, burgers and so much more.</p><div class="buttons"><a class="btn gold" href="advanced-menu.html">Start Your Order</a><a class="btn" href="#story">Explore Dine Bay</a></div></div><span class="scroll">SCROLL TO DISCOVER ↓</span></header><section class="story" id="story"><div class="reveal"><span class="eyebrow">A culinary experience</span><h2>A taste worth coming back for.</h2><p>Discover an all-day dining experience in Business Bay. From comforting Indian favourites to freshly prepared wraps, burgers and refreshing drinks — something delicious is always waiting.</p></div><div class="frame reveal" role="img" aria-label="Delicious Kerala chicken biryani and Indian food"></div></section><section class="signatures"><span class="eyebrow">A taste of Dine Bay</span><h2 class="reveal">Our signatures.</h2><div class="dishgrid">
 <article class="dish reveal"><img src="https://images.pexels.com/photos/12737656/pexels-photo-12737656.jpeg?auto=compress&cs=tinysrgb&w=850" alt="Malabar dum biryani"><div><h3>Malabar Dum Biryani</h3><p>Fragrant Kerala-inspired dum biryani with warm Malabar spices.</p></div><b>AED 14.00</b><a class="dishOrder" href="advanced-menu.html?search=Malabar%20Dum%20Biryani">Explore on menu →</a></article><article class="dish reveal"><img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=850" alt="Chicken masala dish"><div><h3>Chicken Tikka Masala</h3><p>Tender chicken in a rich, aromatic spiced gravy.</p></div><b>AED 14.00</b><a class="dishOrder" href="advanced-menu.html?search=Chicken%20Tikka%20Masala">Explore on menu →</a></article><article class="dish reveal"><img src="https://images.pexels.com/photos/5779367/pexels-photo-5779367.jpeg?auto=compress&cs=tinysrgb&w=850" alt="Freshly prepared food"><div><h3>Chicken Shawarma</h3><p>Freshly wrapped, flavour-packed and made to satisfy.</p></div><b>AED 7.00</b><a class="dishOrder" href="advanced-menu.html?search=Chicken%20Shawarma">Explore on menu →</a></article>
 </div></section><section class="closing"><div class="reveal"><span class="eyebrow">Made fresh • Served with care</span><h2>Your next favourite meal awaits.</h2><a class="btn gold" href="advanced-menu.html">Explore the menu</a></div></section><p class="fine">Dine Bay Restaurant · The Exchange Tower, Business Bay, Dubai · Orders via WhatsApp; restaurant confirmation required</p><script>
-const videos=[...document.querySelectorAll('.film video')];
+const slides=[...document.querySelectorAll('.foodScene')];
 const dots=[...document.querySelectorAll('.sceneMeta span')];
-const names=['Fresh off the grill','Shawarma favourites','Chef-crafted flavours','Hot from the kitchen','Made fresh at Dine Bay'];
-let scene=0,sceneTimer=null,playToken=0;
-function markScene(i){dots.forEach((d,n)=>d.classList.toggle('active',n===i));const el=document.getElementById('sceneName');if(el)el.textContent=names[i]||'Freshly prepared'}
-function showVideo(i){
- if(!videos.length)return;
- const token=++playToken;
- clearTimeout(sceneTimer);
- videos.forEach((v,n)=>{if(n!==i){v.classList.remove('active','is-playing');v.pause()}});
- const v=videos[i];scene=i;markScene(i);
- v.classList.add('active');
- const success=()=>{if(token!==playToken)return;v.classList.add('is-playing')};
- const failure=()=>{if(token!==playToken)return;v.classList.remove('is-playing')};
- const attempt=()=>{if(token!==playToken)return;const p=v.play();if(p&&typeof p.then==='function')p.then(success).catch(failure)};
- if(v.readyState>=2)attempt();else{v.addEventListener('loadeddata',attempt,{once:true});v.load()}
- sceneTimer=setTimeout(()=>showVideo((i+1)%videos.length),5500);
+const names=["Malabar Dum Biryani","Chicken Shawarma","Chef's Chicken Special","Fresh From the Grill","Dine Bay Signature Flavours"];
+let sceneIndex=0,sceneTimer=null;
+function activateScene(i){
+  if(!slides.length)return;
+  sceneIndex=i;
+  slides.forEach((slide,n)=>{
+    slide.classList.toggle('active',n===i);
+    const video=slide.querySelector('video');
+    if(video&&n!==i){video.pause();video.classList.remove('is-playing')}
+  });
+  dots.forEach((dot,n)=>dot.classList.toggle('active',n===i));
+  const caption=document.getElementById('sceneName');
+  if(caption)caption.textContent=names[i];
+  const video=slides[i].querySelector('video');
+  if(video){
+    video.onplaying=()=>{if(sceneIndex===i)video.classList.add('is-playing')};
+    video.onwaiting=()=>video.classList.remove('is-playing');
+    video.onerror=()=>video.classList.remove('is-playing');
+    video.onended=()=>video.classList.remove('is-playing');
+    const result=video.play();if(result&&result.catch)result.catch(()=>video.classList.remove('is-playing'));
+  }
+  clearTimeout(sceneTimer);
+  sceneTimer=setTimeout(()=>activateScene((i+1)%slides.length),5500);
 }
-videos.forEach(v=>{
- v.muted=true;v.playsInline=true;v.preload='metadata';
- v.addEventListener('playing',()=>{if(v===videos[scene])v.classList.add('is-playing')});
- v.addEventListener('waiting',()=>v.classList.remove('is-playing'));
- v.addEventListener('error',()=>{v.classList.remove('is-playing');const f=v.dataset.fallback;if(f&&!v.dataset.fallbackUsed){v.dataset.fallbackUsed='1';const source=v.querySelector('source');if(source)source.src=f;v.load();if(v===videos[scene])v.play().catch(()=>{})}});
-});
-const start=()=>{showVideo(0);setTimeout(()=>document.getElementById('loader')?.classList.add('hide'),1750)};
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+const boot=()=>{
+  activateScene(0);
+  setTimeout(()=>document.getElementById('loader')?.classList.add('hide'),1750);
+};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 setTimeout(()=>document.getElementById('loader')?.classList.add('hide'),2700);
-if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.15});document.querySelectorAll('.reveal').forEach(x=>io.observe(x))}else document.querySelectorAll('.reveal').forEach(x=>x.classList.add('show'));
+if('IntersectionObserver' in window){
+ const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.15});
+ document.querySelectorAll('.reveal').forEach(x=>io.observe(x))
+}else document.querySelectorAll('.reveal').forEach(x=>x.classList.add('show'));
 </script></body></html>
