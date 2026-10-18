@@ -1,0 +1,25 @@
+{
+  "source": "01 Dine Bay.pdf",
+  "note": "Original menu photography extraction manifest. Pages are not individual dish photos; crop and verify before assigning images.",
+  "pageToCategory": {
+    "10": "Pasta & Salad",
+    "11": "Shawarma & Clubs",
+    "12": "Burgers & Combos",
+    "13": "Burgers & Combos",
+    "14": "Poratta & Wraps",
+    "15": "Starters",
+    "16": "Juices & Drinks",
+    "17": "Juices & Drinks",
+    "18": "Desserts",
+    "19": "Broasted Chicken",
+    "02": "Breakfast",
+    "03": "Diet Menu",
+    "04": "Breakfast",
+    "05": "Biryani & Rice",
+    "06": "North Indian",
+    "07": "Fried Rice & Noodles",
+    "08": "Chinese",
+    "09": "Filipino / Soup"
+  },
+  "status": "Image binaries still require repository upload and verified per-dish mapping; do not use category photos as exact dish matches."
+}
