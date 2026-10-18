@@ -50,12 +50,12 @@ nav a{color:#f4e8d2}nav a:hover{color:#f1c86f}
 @keyframes welcomeOrbit{to{transform:rotate(360deg)}}@keyframes welcomeEntrance{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes welcomePulse{to{box-shadow:0 0 60px #e3b56b38;transform:scale(1.045)}}@keyframes welcomeProgress{from{transform:translateX(-120%)}to{transform:translateX(340%)}}
 @media(prefers-reduced-motion:reduce){.loader:before,.loaderInner,.loader .crown,.loader .line:after{animation:none}}
 /* Video resilience: always show an attractive food still while clips buffer or fail */
-.film{background:#170e0a url('https://images.pexels.com/photos/5779367/pexels-photo-5779367.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover}
+.film{background:#170e0a url('https://images.pexels.com/photos/12737656/pexels-photo-12737656.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover}
 .film:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0a0808a6,transparent 70%);z-index:1;pointer-events:none}
 .film video{opacity:0!important;visibility:hidden;transition:opacity 1.2s ease,transform 6s ease}
 .film video.active.is-playing{opacity:1!important;visibility:visible}
 .film video:not(.is-playing){pointer-events:none}
-.film .filmFallback{position:absolute;inset:0;background:linear-gradient(90deg,#08090966,#08090911),url('https://images.pexels.com/photos/5779367/pexels-photo-5779367.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;z-index:0}
+.film .filmFallback{position:absolute;inset:0;background:linear-gradient(90deg,#08090966,#08090911),url('https://images.pexels.com/photos/12737656/pexels-photo-12737656.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;z-index:0}
 @media(max-width:760px){.film{background-position:center}.film .filmFallback{background-position:center}}
 
 /* Menu-led cinematic experience — matching food stills always visible */
